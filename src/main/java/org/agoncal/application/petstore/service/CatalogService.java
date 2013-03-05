@@ -12,6 +12,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.io.Serializable;
 import java.util.List;
+import org.agoncal.application.petstore.util.Cacheable;
+import org.agoncal.application.petstore.util.ObjectCache;
 
 /**
  * @author Antonio Goncalves
@@ -34,6 +36,7 @@ public class CatalogService implements Serializable {
     // =              Public Methods        =
     // ======================================
 
+    @Cacheable
     public Category findCategory(Long categoryId) {
         if (categoryId == null)
             throw new ValidationException("Invalid category id");
@@ -41,6 +44,7 @@ public class CatalogService implements Serializable {
         return em.find(Category.class, categoryId);
     }
 
+    @Cacheable
     public Category findCategory(String categoryName) {
         if (categoryName == null)
             throw new ValidationException("Invalid category name");
@@ -63,6 +67,7 @@ public class CatalogService implements Serializable {
         return category;
     }
 
+    @Cacheable
     public Category updateCategory(Category category) {
         if (category == null)
             throw new ValidationException("Category object is null");
@@ -70,6 +75,7 @@ public class CatalogService implements Serializable {
         return em.merge(category);
     }
 
+    @Cacheable
     public void removeCategory(Category category) {
         if (category == null)
             throw new ValidationException("Category object is null");
@@ -77,6 +83,7 @@ public class CatalogService implements Serializable {
         em.remove(em.merge(category));
     }
 
+    @Cacheable
     public void removeCategory(Long categoryId) {
         if (categoryId == null)
             throw new ValidationException("Invalid category id");
@@ -93,10 +100,15 @@ public class CatalogService implements Serializable {
         return typedQuery.getResultList();
     }
 
+    @Cacheable
     public Product findProduct(Long productId) {
         if (productId == null)
             throw new ValidationException("Invalid product id");
 
+        try {
+            Thread.sleep(100);
+        } catch(InterruptedException e) {}
+        
         Product product = em.find(Product.class, productId);
         if (product != null) {
             product.getItems(); // TODO check lazy loading
@@ -109,6 +121,7 @@ public class CatalogService implements Serializable {
         return typedQuery.getResultList();
     }
 
+    @Cacheable
     public Product createProduct(Product product) {
         if (product == null)
             throw new ValidationException("Product object is null");
@@ -120,6 +133,7 @@ public class CatalogService implements Serializable {
         return product;
     }
 
+    @Cacheable
     public Product updateProduct(Product product) {
         if (product == null)
             throw new ValidationException("Product object is null");
@@ -127,6 +141,7 @@ public class CatalogService implements Serializable {
         return em.merge(product);
     }
 
+    @Cacheable
     public void removeProduct(Product product) {
         if (product == null)
             throw new ValidationException("Product object is null");
@@ -134,6 +149,7 @@ public class CatalogService implements Serializable {
         em.remove(em.merge(product));
     }
 
+    @Cacheable
     public void removeProduct(Long productId) {
         if (productId == null)
             throw new ValidationException("Invalid product id");
@@ -150,6 +166,7 @@ public class CatalogService implements Serializable {
         return typedQuery.getResultList();
     }
 
+    @Cacheable
     public Item findItem(final Long itemId) {
         if (itemId == null)
             throw new ValidationException("Invalid item id");
@@ -171,6 +188,7 @@ public class CatalogService implements Serializable {
         return typedQuery.getResultList();
     }
 
+    @Cacheable
     public Item createItem(Item item) {
         if (item == null)
             throw new ValidationException("Item object is null");
@@ -185,13 +203,15 @@ public class CatalogService implements Serializable {
         return item;
     }
 
+    @Cacheable
     public Item updateItem(Item item) {
         if (item == null)
             throw new ValidationException("Item object is null");
 
         return em.merge(item);
     }
-
+    
+    @Cacheable
     public void removeItem(Item item) {
         if (item == null)
             throw new ValidationException("Item object is null");
@@ -199,6 +219,7 @@ public class CatalogService implements Serializable {
         em.remove(em.merge(item));
     }
 
+    @Cacheable
     public void removeItem(Long itemId) {
         if (itemId == null)
             throw new ValidationException("itemId is null");

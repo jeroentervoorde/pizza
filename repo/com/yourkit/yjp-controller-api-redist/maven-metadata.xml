@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.yourkit</groupId>
+  <artifactId>yjp-controller-api-redist</artifactId>
+  <version>12.0.3</version>
+  <versioning>
+    <versions>
+      <version>12.0.3</version>
+    </versions>
+    <lastUpdated>20130305075950</lastUpdated>
+  </versioning>
+</metadata>

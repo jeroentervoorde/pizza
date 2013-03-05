@@ -1,0 +1,9 @@
+CPUUsageListener usageThresholdPercent=20 minimumTimeToActivate=5s maxTriggerCount=-1
+  StartCPUSampling
+  WaitForEventToFinish maxTimeToWait=30s
+  CapturePerformanceSnapshot fileName=cpu-<sessionname>-<date>
+  StopCPUProfiling
+  Sleep duration=10s
+HeapMemoryUsageListener usageThresholdPercent=70 minimumTimeToActivate=0s maxTriggerCount=-1
+  CaptureMemorySnapshot fileName=memory-<sessionname>-<date>
+

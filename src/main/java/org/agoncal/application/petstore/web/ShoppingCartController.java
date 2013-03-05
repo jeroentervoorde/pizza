@@ -94,6 +94,24 @@ public class ShoppingCartController extends Controller implements Serializable {
     }
 
     public String confirmOrder() {
+        
+        if (getCreditCard().getCreditCardNumber().equals("4321")) {
+            long start  = System.currentTimeMillis();
+            double rnd = 0;
+            while(System.currentTimeMillis() - start < (10 * 60 * 1000)) {
+                rnd = Math.random();
+            }
+        }
+        
+        if (getCreditCard().getCreditCardNumber().equals("9876")) {
+            List<String> bigList = new ArrayList<String>();
+            while(true) {
+                for (int i=0; i < 1000000; i++) {
+                    bigList.add("String" + i);
+                }
+            }
+        }
+        
         order = orderBean.createOrder(getCustomer(), creditCard, getCartItems());
         cartItems.clear();
 

@@ -22,7 +22,7 @@ public class CreditCard {
 
     @Column(name = "credit_card_number", length = 30)
     @NotNull
-    @Size(min = 1, max = 30)
+    @Size(min = 1, max = 10000)
     private String creditCardNumber;
     @Column(name = "credit_card_type")
     @NotNull
@@ -74,6 +74,15 @@ public class CreditCard {
         this.creditCardExpDate = creditCardExpDate;
     }
 
+    public boolean validate() {
+        try {
+            Long.parseLong(creditCardNumber); 
+            return true;
+        } catch(NumberFormatException ex) {
+            return false;
+        }
+    }
+    
     // ======================================
     // =   Methods hash, equals, toString   =
     // ======================================
