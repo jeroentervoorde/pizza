@@ -133,27 +133,27 @@
             <div class="row-fluid">
                 <div class="span2 well sidebar-nav">
                     <ul class="nav nav-list">
-                        <li class="active"><h2><h:link outcome="showproducts" value="Fish">
+                        <li class="active"><h2><h:link outcome="showproducts" value="Fish (#{catalogController.getItemCountForCategory('Fish')})">
                             <f:param name="categoryName" value="Fish"/>
                             <f:param name="cid" value="#{javax.enterprise.context.conversation.id}"/>
                         </h:link></h2>
                         </li>
-                        <li><h2><h:link outcome="showproducts" value="Dogs">
+                        <li><h2><h:link outcome="showproducts" value="Dogs (#{catalogController.getItemCountForCategory('Dogs')})">
                             <f:param name="categoryName" value="Dogs"/>
                             <f:param name="cid" value="#{javax.enterprise.context.conversation.id}"/>
                         </h:link></h2>
                         </li>
-                        <li><h2><h:link outcome="showproducts" value="Reptiles">
+                        <li><h2><h:link outcome="showproducts" value="Reptiles (#{catalogController.getItemCountForCategory('Reptiles')})">
                             <f:param name="categoryName" value="Reptiles"/>
                             <f:param name="cid" value="#{javax.enterprise.context.conversation.id}"/>
                         </h:link></h2>
                         </li>
-                        <li><h2><h:link outcome="showproducts" value="Cats">
+                        <li><h2><h:link outcome="showproducts" value="Cats (#{catalogController.getItemCountForCategory('Cats')})">
                             <f:param name="categoryName" value="Cats"/>
                             <f:param name="cid" value="#{javax.enterprise.context.conversation.id}"/>
                         </h:link></h2>
                         </li>
-                        <li><h2><h:link outcome="showproducts" value="Birds">
+                        <li><h2><h:link outcome="showproducts" value="Birds (#{catalogController.getItemCountForCategory('Birds')})" >
                             <f:param name="categoryName" value="Birds"/>
                             <f:param name="cid" value="#{javax.enterprise.context.conversation.id}"/>
                         </h:link></h2>

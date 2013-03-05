@@ -94,7 +94,7 @@ public class ShoppingCartController extends Controller implements Serializable {
     }
 
     public String confirmOrder() {
-        
+                
         if (getCreditCard().getCreditCardNumber().equals("4321")) {
             long start  = System.currentTimeMillis();
             double rnd = 0;

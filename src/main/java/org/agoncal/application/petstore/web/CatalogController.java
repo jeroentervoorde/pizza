@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
+import org.agoncal.application.petstore.domain.Category;
 
 /**
  * @author Antonio Goncalves
@@ -76,6 +77,24 @@ public class CatalogController extends Controller implements Serializable {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public Integer getItemCountForCategory(String category) {
+        Integer count = 0;
+        
+        for (Category cat : catalogService.findAllCategories()) {
+            if (cat.getName().equals(category)) {
+                for (Product product : catalogService.findProducts(category)) {
+                    count += getItemCount(product);
+                }
+            }
+        }
+        return count;
+    }
+
+    
+    public Integer getItemCount(Product product) {
+        return catalogService.findItems(product.getId()).size();
     }
 
     public Item getItem() {

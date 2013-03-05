@@ -24,7 +24,7 @@
         <h:dataTable value="#{catalogController.products}" var="oneProduct"
                      rendered="#{catalogController.products.size() > 0}" styleClass="table">
             <h:column>
-                <h:link outcome="showitems" includeViewParams="true" value="#{oneProduct.name}">
+                <h:link outcome="showitems" includeViewParams="true" value="#{oneProduct.name} (#{catalogController.getItemCount(oneProduct)})">
                     <f:param name="productId" value="#{oneProduct.id}"/>
                     <f:param name="cid" value="#{javax.enterprise.context.conversation.id}"/>
                 </h:link>
