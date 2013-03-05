@@ -301,6 +301,11 @@
 
     <repositories>
         <repository>
+            <id>project.local</id>
+            <name>project</name>
+            <url>file:${project.basedir}/repo</url>
+        </repository>
+        <repository>
             <id>sonar</id>
             <name>Sonar</name>
             <url>http://repository.sonarsource.org/content/repositories/sonar</url>
@@ -335,11 +340,7 @@
             <name>Java.Net Snapshots Maven Repository Group</name>
             <url>https://maven.java.net/content/repositories/snapshots</url>
         </repository>
-        <repository>
-            <id>project.local</id>
-            <name>project</name>
-            <url>file:${project.basedir}/repo</url>
-        </repository>
+
     </repositories>
 
     <pluginRepositories>
